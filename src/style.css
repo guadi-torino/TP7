@@ -29,12 +29,12 @@ h2 {
 }
 
 .card {
-  left: -10%;
+  padding: 2rem;
   width: 100%;
   height: 100%;
   border-radius: 12px;
-  background: #3baacc;
-  box-shadow: 17px -17px 0px #1389ad;
+  background: #fff;
+  box-shadow: 17px -17px 0px #25758d;
 }
 
 .lista-citas .media {
@@ -59,7 +59,8 @@ h2 {
 }
 
 label {
-  color: white;
+  color: black;
+  text-align: center;
 }
 
 input[type='date'],
@@ -71,19 +72,23 @@ input[type='time'] {
   border-radius: 4px;
   box-shadow: none;
   box-sizing: border-box;
-  align-items: center;
 }
 
 .cita {
-  padding: 2rem;
-  background: white;
-  border-bottom: 1px solid #e1e1e1;
-  color: black;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  height: 70%;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 17px -17px 0px #25758d;
 }
 
 .cita p {
   font-weight: bold;
   margin-bottom: 0.8rem;
+  text-align: center;
 }
 
 .cita p span {
@@ -100,7 +105,12 @@ input[type='time'] {
   border-bottom-right-radius: 1rem;
 }
 
-.button.eliminar,
+.button.eliminar{
+  border-color: #c10059;
+  background-color:#ffffff;
+  margin-top: 2rem;
+  color:#c10059;
+}
 .button.eliminar:hover {
   background-color: #c10059;
   color: white;
@@ -108,7 +118,6 @@ input[type='time'] {
 }
 
 .alerta-error {
-  background-color: white;
   color: red;
   padding: 1rem;
   font-size: 2rem;
