@@ -23,8 +23,7 @@ h2 {
   text-align: center;
 
   text-transform: uppercase;
-
-  font-family: 'Staatliches', cursive;
+  font-family: 'Bebas Neue', cursive;
   letter-spacing: 1px;
 }
 
@@ -117,11 +116,4 @@ input[type='time'] {
   margin-top: 2rem;
 }
 
-.alerta-error {
-  color: red;
-  padding: 1rem;
-  font-size: 2rem;
-  text-transform: uppercase;
-  text-align: center;
-  font-family: 'Staatliches', cursive;
-}
+

@@ -58,7 +58,7 @@ const Formulario = ({ crearCitas }) => {
       <h2>Crear mi cita</h2>
 
       {error ? (
-        <p className="alerta-error">Todos los campos son obligatorios</p>
+        alert("Todos los campos son obligatorios")
       ) : null}
       <div className="card">
         <form onSubmit={sumbitCita}>
