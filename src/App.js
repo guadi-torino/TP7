@@ -41,6 +41,7 @@ export default function App() {
             {citas.map(cita => (
               <Cita key={cita.id} cita={cita} eliminarCita={eliminarCita} />
             ))}
+           
           </div>
         </div>
       </div>
