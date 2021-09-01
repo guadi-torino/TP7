@@ -78,8 +78,8 @@ input[type='time'] {
   padding: 1rem;
   align-items: center;
   justify-content: center;
-  width: 70%;
-  height: 70%;
+  width: 100%;
+  height: 100%;
   border-radius: 12px;
   background: #ffffff;
   box-shadow: 17px -17px 0px #25758d;
@@ -105,11 +105,11 @@ input[type='time'] {
   border-bottom-right-radius: 1rem;
 }
 
-.button.eliminar{
+.button.eliminar {
   border-color: #c10059;
-  background-color:#ffffff;
+  background-color: #ffffff;
   margin-top: 2rem;
-  color:#c10059;
+  color: #c10059;
 }
 .button.eliminar:hover {
   background-color: #c10059;
