@@ -1,122 +1,124 @@
-import React, {Fragment,useState} from 'react';
-import uuid from 'uuid/dist/v4'
+import React, { Fragment, useState } from 'react';
+import uuid from 'uuid/dist/v4';
 import PropTypes from 'prop-types';
 
-const Formulario = ({crearCitas}) => {
+const Formulario = ({ crearCitas }) => {
+  const [cita, setCita] = useState({
+    mascota: '',
+    propietario: '',
+    fecha: '',
+    hora: '',
+    sintomas: '',
+    id: ''
+  });
 
-    const [cita,setCita] = useState({
-         mascota: '',
-        propietario: '',
-        fecha: '',
-        hora: '',
-        sintomas: '',
-        id: ''
+  const [error, setError] = useState(false);
+
+  const actualizarState = e => {
+    setCita({
+      ...cita,
+      [e.target.name]: e.target.value
     });
+  };
 
-    const [error, setError] = useState(false);
+  const { mascota, propietario, fecha, hora, sintomas } = cita;
 
-    const actualizarState = e => {
-        setCita({
-            ...cita,
-            [e.target.name] : e.target.value
-        })
+  const sumbitCita = e => {
+    e.preventDefault();
+
+    if (
+      mascota.trim() === '' ||
+      propietario.trim() === '' ||
+      fecha.trim() === '' ||
+      hora.trim() === '' ||
+      sintomas.trim() === ''
+    ) {
+      setError(true);
+      return;
     }
 
-    const {mascota, propietario, fecha, hora, sintomas} = cita;
+    cita.id = uuid();
 
-    const sumbitCita = e => {
-        e.preventDefault();
+    setError(false);
 
-        if(mascota.trim() === '' || propietario.trim() === '' || fecha.trim() === '' || hora.trim() === '' || sintomas.trim() === ''){
-            setError(true);
-            return;
-        }
+    crearCitas(cita);
 
-        cita.id = uuid();
+    setCita({
+      mascota: '',
+      propietario: '',
+      fecha: '',
+      hora: '',
+      sintomas: '',
+      id: ''
+    });
+  };
 
-        setError(false);
+  return (
+    <Fragment>
+      <h2>Crear mi cita</h2>
 
-        crearCitas(cita);
+      {error ? (
+        <p className="alerta-error">Todos los campos son obligatorios</p>
+      ) : null}
+      <div className="card">
+        <form onSubmit={sumbitCita}>
+          <label>Nombre Mascota</label>
+          <input
+            type="text"
+            className="u-full-width"
+            placeholder="Nombre Mascota"
+            name="mascota"
+            onChange={actualizarState}
+            value={mascota}
+          />
 
-        setCita({
-            mascota: '',
-            propietario: '',
-            fecha: '',
-            hora: '',
-            sintomas: '',
-            id: '',
-        })
-    }
+          <label>Nombre Dueño</label>
+          <input
+            type="text"
+            className="u-full-width"
+            placeholder="Nombre Dueño"
+            name="propietario"
+            onChange={actualizarState}
+            value={propietario}
+          />
 
-    return (
-        <Fragment>
-            <h2>Crear mi cita</h2>
+          <label>Fecha</label>
+          <input
+            type="date"
+            className="u-full-width"
+            name="fecha"
+            onChange={actualizarState}
+            value={fecha}
+          />
 
-            {error ? <p className="alerta-error">Todos los campos son obligatorios</p> : null}
+          <label>Hora</label>
+          <input
+            type="time"
+            className="u-full-width"
+            name="hora"
+            onChange={actualizarState}
+            value={hora}
+          />
 
-            <form
-                onSubmit= {sumbitCita}
-            >
-                <label>Nombre Mascota</label>
-                    <input
-                        type="text"
-                        classNam="u-full-width"
-                        placeholder="Nombre Mascota"
-                        name="mascota"
-                        onChange={actualizarState}
-                        value={mascota}
-                    />
+          <label>Sintomas</label>
+          <textarea
+            className="u-full-width"
+            name="sintomas"
+            onChange={actualizarState}
+            value={sintomas}
+          />
 
-                <label>Nombre Dueño</label>
-                    <input
-                        type="text"
-                        classNam="u-full-width"
-                        placeholder="Nombre Dueño"
-                        name="propietario"
-                        onChange={actualizarState}
-                        value={propietario}
-                    />
-
-                <label>Fecha</label>
-                    <input
-                        type="date"
-                        classNam="u-full-width"
-                        name="fecha"
-                        onChange={actualizarState}
-                        value={fecha}
-                    />
-
-                <label>Hora</label>
-                    <input
-                        type="time"
-                        classNam="u-full-width"
-                        name="hora"
-                        onChange={actualizarState}
-                        value={hora}
-                    />
-
-                <label>Sintomas</label>
-                    <textarea
-                        classNam="u-full-width"
-                        name="sintomas"
-                        onChange={actualizarState}
-                        value={sintomas}
-                    ></textarea>
-                    
-                <button 
-                    type="submit"
-                    className="u-full-width button-primary">
-                        Agregar Cita
-                    </button>
-
-
-            </form>
-        </Fragment>
-    );
-}
+          <button type="submit" className="u-full-width button-primary">
+            Agregar Cita
+          </button>
+        </form>
+      </div>
+    </Fragment>
+  );
+};
 
 Formulario.propTypes = {
-    crearCitas: PropTypes.func.isRequired
-}
+  crearCitas: PropTypes.func.isRequired
+};
 
 export default Formulario;

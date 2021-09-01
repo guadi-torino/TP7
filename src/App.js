@@ -14,10 +14,10 @@ export default function App() {
   useEffect(() => {}, [citas, citasIniciales]);
 
   const crearCitas = cita => {
-    guardarCitas(
+    guardarCitas([
       ...citas,
       cita
-    )
+    ])
   };
 
   const eliminarCita = id => {
@@ -38,9 +38,7 @@ export default function App() {
           </div>
           <div className="one-half column">
             <h2>{titulo}</h2>
-            {citas.map(cita => (
-              <Cita key={cita.id} cita={cita} eliminarCita={eliminarCita} />
-            ))}
+            {citas.map(cita => (<Cita key={cita.id} cita={cita}  eliminarCita={eliminarCita} /> ))}
            
           </div>
         </div>
